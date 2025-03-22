@@ -24,4 +24,4 @@ function convertPallindrome(str) {
     console.log(firstHalf + oddChar+ firstHalf.split('').reverse().join(''));
 
 }
-convertPallindrome('abcbdcd')
+convertPallindrome('bcbdcd')
