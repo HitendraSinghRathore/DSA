@@ -13,7 +13,9 @@ function longestPalindrome(str) {
     let result = '';
     for(let  i =0;i< str.length - 1;i++) {
         const evenCented = exapnd(str, i,i);
+        console.log(evenCented);
         const oddCented = exapnd(str, i,i + 1);
+        console.log(oddCented);
         if(evenCented.length > result.length) {
             result = evenCented;
         } 
@@ -25,4 +27,4 @@ function longestPalindrome(str) {
 }
 
 
-console.log(longestPalindrome('abccccdd'));
+longestPalindrome('abccccdd');
