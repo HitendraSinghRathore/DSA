@@ -25,4 +25,4 @@ function longestPalindrome(str) {
 }
 
 
-console.log(longestPalindrome('abbabbaabba'));
+console.log(longestPalindrome('abccccdd'));
