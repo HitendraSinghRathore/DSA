@@ -36,4 +36,5 @@ function passeedStrin(str) {
 
 
 
+
 console.log(passeedStrin('1 + 2 * 3 + 5 - 2'));
