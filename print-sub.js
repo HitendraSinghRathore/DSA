@@ -7,7 +7,7 @@ function solveNumers(str) {
             visitedChars.push(str[start++]);
             length++;
         }
-        // console.log(visitedChars);
+
         return length;
     }
     for(let i=0; i< str.length;i++) {
