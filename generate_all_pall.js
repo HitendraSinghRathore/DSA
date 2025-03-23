@@ -1,29 +1,29 @@
 function generatePerm(str) {
-    if(str.length === 0) return [];
-    function traverse(start,end) {
-        if(start > end) return new Set();
-        if(start === end ) return new Set([str[start]]);
+    
+    function traverse(start, end) {
+        if(start >  end) return new Set();
+        if(start === end) return new Set(str[start]);
+        const result = new Set();
 
-        let result = new Set();
         if(str[start] === str[end]) {
-            const mid = traverse(start + 1, end - 1);
-            for(let seq of mid) {
+            const middle = traverse(start + 1, end  -1) ;
+            for(let seq of middle) {
                 result.add(str[start] + seq + str[end]);
             }
             result.add(str[start] + str[end]);
         }
-        const left = traverse(start + 1, end);
-        for(const seq of left) {
-            result.add( seq);
+        const leftSeq = traverse(start + 1, end);
+        for(let seq of leftSeq) {
+            result.add(seq);
         }
-        const right = traverse(start , end - 1);
-        for(const seq of right) {
+        const rightSeq = traverse(start, end - 1);
+        for(let seq of rightSeq) {
             result.add(seq);
         }
         return result;
     }
-    const result = traverse(0,str.length - 1);
-    return Array.from(result);
+    const res = traverse(0,str.length - 1);
+return Array.from(res);
 }
 
-console.log(generatePerm('abcbdcd'))
+console.log(generatePerm('aabb'))

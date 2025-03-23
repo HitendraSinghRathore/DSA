@@ -31,4 +31,4 @@ var countSubstrings = function(s) {
     // console.log(Array.from(result).length)
 };
 
-countSubstrings('aab');
+countSubstrings('aabb');
