@@ -6,7 +6,6 @@ function generateComb(str, index) {
   }
 
   for(let i=index; i<str.length; i++) {
-    // console.log('called')
     let temp = str[index];
     str[index] = str[i];
     str[i] = temp;
