@@ -23,12 +23,12 @@ function compute(tasks, idle) {
             executionStack.push('');
         }
         for(let [key,value] of mapFreq) {
-            //simulate cycle
             if(key !== task)
                 mapFreq.set(key, value - 1 < 0 ? 0 :  value - 1 );
         }
     } 
     return executionStack.length;
 }
+
 
 console.log(compute(['x','x','y','y'], 2))
