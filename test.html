@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Parallel Progress Bars</title>
+  <style>
+    .progress-container {
+      width: 100%;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      height: 20px;
+      width: 0%;
+      background-color: #76c7c0;
+      text-align: center;
+      line-height: 20px;
+      color: #fff;
+      transition: width 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <h2>Parallel Progress Bars</h2>
+  <div id="progress-bars"></div>
+
+  <script>
+    // Set the limit number of progress bars to create
+    const limit = 5; // Change this number as needed
+    const progressBarsContainer = document.getElementById('progress-bars');
+
+    // Create progress bars dynamically
+    for (let i = 0; i < limit; i++) {
+      // Create container for each progress bar
+      const container = document.createElement('div');
+      container.className = 'progress-container';
+
+      // Create the progress bar element
+      const bar = document.createElement('div');
+      bar.className = 'progress-bar';
+      bar.id = 'bar-' + i;
+      bar.innerText = '0%';
+
+      // Append bar to its container and container to the main container
+      container.appendChild(bar);
+      progressBarsContainer.appendChild(container);
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        // Increase progress by a random value between 1 and 5
+        progress += Math.random() * 5 * (i + 1);
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+        }
+        // Update the progress bar's width and text
+        bar.style.width = progress + '%';
+        bar.innerText = Math.floor(progress) + '%';
+      }, 100 + i * 50); // Different intervals to create staggered progress speeds
+    }
+  </script>
+</body>
+</html>
