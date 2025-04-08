@@ -15,6 +15,7 @@ function isPallindrom(str) {
 function generatePerm(str, index, curr) {
 
     if(index === str.length) {
+        console.log(curr)
         return isPallindrom(curr) && curr.length > 0 ? 1:  0 ;
     }
     const include = generatePerm(str, index + 1, curr + str[index]);
