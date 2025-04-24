@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plain Accordion Example</title>
+  <style>
+    /* Container for the accordion */
+    .accordion {
+      max-width: 600px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* Each accordion item */
+    .accordion-item {
+      border-bottom: 1px solid #ccc;
+    }
+    
+    /* Last item should not have a bottom border */
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Accordion header styling */
+    .accordion-header {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      padding: 15px;
+      font-size: 18px;
+      user-select: none;
+    }
+
+    /* Accordion content styling */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease-out;
+      background-color: #fff;
+      padding: 0 15px;
+    }
+
+    /* Content paragraph styling */
+    .accordion-content p {
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">Section 1</div>
+      <div class="accordion-content">
+        <p>This is the content for section 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque rem minima facilis dolorem modi commodi accusantium nulla, nam corrupti harum molestiae cum eaque, provident consequuntur doloremque dolore. Aliquid, nulla numquam?
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Section 2</div>
+      <div class="accordion-content">
+        <p>This is the content for section 2. Phasellus imperdiet, nulla et dictum interdum.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum voluptate ipsam rem placeat officia deleniti voluptatibus eum quis illum. Quaerat tenetur eligendi quisquam neque magnam impedit repudiandae id porro eaque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis repellendus ipsam maxime aperiam rem amet velit nisi doloribus officia fugiat, quibusdam eligendi vero soluta esse ullam, in consequuntur cupiditate nostrum!
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Section 3</div>
+      <div class="accordion-content">
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptas natus delectus quibusdam minus, doloremque quam laudantium enim in dolorum hic molestias impedit atque sapiente animi veniam? Corrupti, atque dolore. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat saepe dicta eligendi voluptatibus, alias fugiat nam? Incidunt facere maxime itaque facilis magnam recusandae placeat labore ex impedit minus. Eveniet, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea neque atque, perferendis accusamus facilis aliquam repudiandae hic nihil optio tempore nulla inventore laudantium amet officiis cupiditate omnis earum iusto beatae.This is the content for section 3. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Wait until the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all accordion header elements
+      const headers = document.querySelectorAll('.accordion-header');
+
+      headers.forEach(header => {
+        header.addEventListener('click', function() {
+          // Each accordion item is the parent of its header
+          const item = header.parentElement;
+          // Get the content element inside the accordion item
+          const content = item.querySelector('.accordion-content');
+
+          // Check if this item is already open (active)
+          const isActive = item.classList.contains('active');
+
+          // Close any currently open accordion items (optional behavior)
+          document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
+            // Remove active class and collapse its content
+            activeItem.classList.remove('active');
+            activeItem.querySelector('.accordion-content').style.maxHeight = null;
+          });
+
+          // If the clicked item was not already active, open it
+          if (!isActive) {
+            item.classList.add('active');
+            // Set the maxHeight to its scrollHeight to expand it smoothly.
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
