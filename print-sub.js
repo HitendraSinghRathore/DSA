@@ -1,19 +1,20 @@
+/**
+ * Print length of non repeated substring with no repeated chars
+ * Using sliding window
+ * @param {*} str 
+ */
 function solveNumers(str) {
-    let length = -1;
-    function expand(start) {
-        const visitedChars = [];
-        let length = 0
-        while(start < str.length && !visitedChars.includes(str[start]) ) {
-            visitedChars.push(str[start++]);
-            length++;
+    const lastSeen = new Map();
+    let maxLen = 0;
+    let left = 0;
+    for(let right = 0; right < str.length; right++) {
+        if(lastSeen.has(str[right])) {
+            left = Math.max(left, lastSeen.get(str[right]) + 1);
         }
+        lastSeen.set(str[right], right);
+        maxLen = Math.max(maxLen, right - left + 1);
 
-        return length;
     }
-    for(let i=0; i< str.length;i++) {
-        length= Math.max(expand(i), length);
-    }
-    console.log(length);
-
+    console.log( maxLen)
 }
 solveNumers('abcabcbb')

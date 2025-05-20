@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap:12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab"></div>
+<script>
+(function() {
+    function tabs($rootEl, {
+        defaultValue, items
+    }) {
+        const DOM = {
+            $tabBar: document.createElement('div'),
+            $tabPanels: document.createElement('div')
+        }
+        const STATE = {
+            value: defaultValue || items[0].key
+        }
+
+        function update() {
+            const $tabsFragment = document.createDocumentFragment();
+            items.forEach((item) => {
+                const $tabBtn = document.createElement('button');
+                const isActive = item.key === STATE.value;
+                $tabBtn.textContent = item.label;
+                $tabBtn.classList.add('tab-btn');
+                $tabBtn.classList.add(isActive ? 'tab-btn---active' : '');
+                $tabBtn.setAttribute('data-value', item.key);
+
+                $tabsFragment.appendChild($tabBtn);
+
+            });
+            DOM.$tabBar.appendChild($tabsFragment);
+
+            const $tabPanelsFragment = document.createDocumentFragment();
+
+            items.forEach((item ) => {
+                const isActive = item.key === STATE.value;
+                const $tabPanel = document.createElement('div');
+                $tabPanel.classList.add('tab-panel');
+                $tabPanel.classList.add(isActive ? 'tab-panel---active' : '');
+                $tabPanel.isHidden = !isActive;
+                $tabPanel.innerHTML = item.panel;
+                $tabPanelsFragment.appendChild($tabPanel);
+            });
+            DOM.$tabPanels.appendChild($tabPanelsFragment);
+        }
+        function init() {
+            $rootEl.classList.add('tabs');
+            DOM.$tabBar.classList.add('tab-bar');
+            $rootEl.appendChild(DOM.$tabBar);
+            $rootEl.appendChild(DOM.$tabPanels);
+
+        }
+        init();
+    }
+
+    tabs(document.getElementById('tab'), {
+        items: [
+            {
+                key: 'tab1',
+                label: 'Tab 1',
+                panel: 'Tab 1 content'
+            },
+            {
+                key: 'tab2',
+                label: 'Tab 2',
+                panel: 'Tab 2 content'
+            },
+            {
+                key: 'tab3',
+                label: 'Tab 3',
+                panel: 'Tab 3 content'
+            }
+        ]
+    })
+})()
+</script>
+</body>
+</html>

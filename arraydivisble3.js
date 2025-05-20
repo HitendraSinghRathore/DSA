@@ -19,4 +19,4 @@ function arrayCheck(arr) {
 
 
 
-console.log(arrayCheck([1, 2, 3, 4, 5,7,5,3,1,3,5,6,7,3,2,4,5,2]));
+console.log(arrayCheck([1, 2, 3,4]));

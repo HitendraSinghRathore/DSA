@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>History API Example</title>
+  </head>
+  <body>
+    <button id="pushStateBtn">Push State</button>
+    <button id="replaceStateBtn">Replace State</button>
+    <button id="backBtn">Back</button>
+    <button id="forwardBtn">Forward</button>
+
+    <script>
+      document.getElementById('pushStateBtn').addEventListener('click', () => {
+        history.pushState({ page: 1 }, 'title 1', '?page=1');
+      });
+
+      document
+        .getElementById('replaceStateBtn')
+        .addEventListener('click', () => {
+          history.replaceState({ page: 2 }, 'title 2', '?page=2');
+        });
+
+      document.getElementById('backBtn').addEventListener('click', () => {
+        history.back();
+      });
+
+      document.getElementById('forwardBtn').addEventListener('click', () => {
+        history.forward();
+      });
+    </script>
+  </body>
+</html>

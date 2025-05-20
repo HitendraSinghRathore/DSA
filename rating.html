@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Star Rating Widget</title>
+  <style>
+    /* Container set to rtl for "fill-to-left" behavior */
+    .rating {
+      display: inline-block;
+      /* unicode-bidi: bidi-override; */
+      direction: rtl;
+    }
+    /* Hide the radio inputs */
+    .rating input {
+      display: none;
+    }
+    /* Style the labels as stars */
+    .rating label {
+      font-size: 2rem;
+      color: #ccc;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+    }
+    /* Insert star character */
+    .rating label:before {
+      content: '★';
+    }
+    /* Hover and checked states: color stars gold */
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Rate this:</h2>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5">5</label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4">4</label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3">3</label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2">2</label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1">1</label>
+  </div>
+</body>
+</html>

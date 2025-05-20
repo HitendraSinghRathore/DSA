@@ -26,4 +26,4 @@ function generatePerm(str) {
 return Array.from(res);
 }
 
-console.log(generatePerm('aabb'))
+console.log(generatePerm('aabbcab'))

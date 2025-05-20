@@ -4,7 +4,7 @@ function hammingDistance(str1, str2) {
         throw new Error("Strings must be of equal length");
     }
 
-    for(let i=0;i < str1.length;i++) {
+    for(let i=0;i < str1.length;i++) { 
         if(str1[i] !== str2[i]) {
             hammingDistance++;
         }
